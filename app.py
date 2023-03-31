@@ -1,22 +1,29 @@
-import openai
 import os
+import openai
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-def generate_pet_name():
-    prompt = "Generate a creative and unique pet name:"
+def refactor_code(code):
+    prompt = f"Refactor the following Python code to make it more efficient and readable:\n\n{code}\n\nRefactored code:"
 
     response = openai.Completion.create(
         engine="text-davinci-002",
         prompt=prompt,
-        max_tokens=10,
+        max_tokens=1024,
         n=1,
         stop=None,
-        temperature=0.7,
+        temperature=0.5,
     )
 
-    pet_name = response.choices[0].text.strip()
-    return pet_name
+    refactored_code = response.choices[0].text.strip()
+    return refactored_code
 
-if __name__ == "__main__":
-    print(generate_pet_name())
+folder_path = "./repofolder"
+
+for file_name in os.listdir(folder_path):
+    if file_name.endswith(".py"):
+        with open(os.path.join(folder_path, file_name), "r") as file:
+            code = file.read()
+            refactored_code = refactor_code(code)
+            print(f"Refactored code for {file_name}:\n{refactored_code}\n")
+            # Save the refactored code to a new file or overwrite the original file
