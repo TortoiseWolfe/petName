@@ -30,18 +30,20 @@ def refactor_code(code):
 
     return refactored_code, summary
 
+def process_files(folder_path, output_folder="./refactored"):
+    for file_name in os.listdir(folder_path):
+        print(f"Found file: {file_name}")
+        if file_name.endswith(".py"):
+            with open(os.path.join(folder_path, file_name), "r") as file:
+                code = file.read()
+                refactored_code, summary = refactor_code(code)
+                print(f"Refactored code for {file_name}:\n{refactored_code}\n")
+                print(f"Summary of changes for {file_name}:\n{summary}\n")
 
-folder_path = "./repofolder"
+            # Save the refactored code to a new file or overwrite the original file
+            os.makedirs(output_folder, exist_ok=True)
+            with open(os.path.join(output_folder, file_name), "w") as file:
+                file.write(refactored_code)
 
-for file_name in os.listdir(folder_path):
-    print(f"Found file: {file_name}")  # Add this line to display the file names
-    if file_name.endswith(".py"):
-        with open(os.path.join(folder_path, file_name), "r") as file:
-            code = file.read()
-            refactored_code, summary = refactor_code(code)
-            print(f"Refactored code for {file_name}:\n{refactored_code}\n")
-            print(f"Summary of changes for {file_name}:\n{summary}\n")
-
-        # Save the refactored code to a new file or overwrite the original file
-        with open(os.path.join("/refactored", file_name), "w") as file:
-            file.write(refactored_code)
+if __name__ == "__main__":
+    process_files("./repofolder")
