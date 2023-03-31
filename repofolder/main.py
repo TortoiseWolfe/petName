@@ -1,45 +1,45 @@
-def helper1_function1():
-    print("Helper 1, Function 1")
+def fetch_product_data():
+    print("Fetching product data from API")
 
 
-def helper1_function2():
-    print("Helper 1, Function 2")
+def update_product_prices():
+    print("Updating product prices in the API")
 
 
-def helper2_function1():
-    print("Helper 2, Function 1")
+def send_order_request():
+    print("Sending order request to the API")
 
 
-def helper2_function2():
-    print("Helper 2, Function 2")
+def check_order_status():
+    print("Checking order status in the API")
 
 
-def helper3_function1():
-    print("Helper 3, Function 1")
+def read_excel_file():
+    print("Reading Excel file")
 
 
-def helper3_function2():
-    print("Helper 3, Function 2")
+def process_excel_data():
+    print("Processing Excel data")
 
 
-def helper3_function3():
-    print("Helper 3, Function 3")
+def create_excel_report():
+    print("Creating Excel report")
 
 
-def helper3_function4():
-    print("Helper 3, Function 4")
+def save_excel_report():
+    print("Saving Excel report")
 
 
 def main():
     print("Starting main function")
-    helper1_function1()
-    helper1_function2()
-    helper2_function1()
-    helper2_function2()
-    helper3_function1()
-    helper3_function2()
-    helper3_function3()
-    helper3_function4()
+    fetch_product_data()
+    update_product_prices()
+    send_order_request()
+    check_order_status()
+    read_excel_file()
+    process_excel_data()
+    create_excel_report()
+    save_excel_report()
     print("Finished main function")
 
 
