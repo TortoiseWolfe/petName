@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  petName:
+    build: .
+    image: petname
+    environment:
+      OPENAI_API_KEY: "${OPENAI_API_KEY}"
