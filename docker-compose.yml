@@ -9,3 +9,4 @@ services:
     volumes:
       - .:/app # Mount the current directory (host) to the /app directory (container)
       - ./repofolder:/code_to_refactor # Mount the repofolder directory (host) to the /code_to_refactor directory (container)
+      - ./refactored:/refactored

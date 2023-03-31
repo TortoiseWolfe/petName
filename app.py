@@ -27,5 +27,7 @@ for file_name in os.listdir(folder_path):
             code = file.read()
             refactored_code = refactor_code(code)
             print(f"Refactored code for {file_name}:\n{refactored_code}\n")
-            # Save the refactored code to a new file or overwrite the original file
 
+        # Save the refactored code to a new file or overwrite the original file
+        with open(os.path.join("/refactored", file_name), "w") as file:
+            file.write(refactored_code)
