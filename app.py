@@ -21,9 +21,11 @@ def refactor_code(code):
 folder_path = "./repofolder"
 
 for file_name in os.listdir(folder_path):
+    print(f"Found file: {file_name}")  # Add this line to display the file names
     if file_name.endswith(".py"):
         with open(os.path.join(folder_path, file_name), "r") as file:
             code = file.read()
             refactored_code = refactor_code(code)
             print(f"Refactored code for {file_name}:\n{refactored_code}\n")
             # Save the refactored code to a new file or overwrite the original file
+
