@@ -44,8 +44,9 @@ def process_files(folder_path, output_folder="./refactored"):
             os.makedirs(output_folder, exist_ok=True)
             with open(os.path.join(output_folder, file_name), "w") as file:
                 file.write("# Summary of changes:\n")
-                file.write("\n".join([f"# {line}" for line in summary.split("\n")]))
-                file.write("\n\n")
+                for line in summary.split("\n"):
+                    file.write(f"# {line}\n")
+                file.write("\n")
                 file.write(refactored_code)
 
 if __name__ == "__main__":
