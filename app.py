@@ -30,7 +30,7 @@ def refactor_code(code):
 
     return refactored_code, summary
 
-def process_files(folder_path, output_folder="./refactored"):
+def process_files(folder_path, output_folder="./refactored", summary_folder="./summaries"):
     for file_name in os.listdir(folder_path):
         print(f"Found file: {file_name}")
         if file_name.endswith(".py"):
@@ -43,11 +43,14 @@ def process_files(folder_path, output_folder="./refactored"):
             # Save the refactored code to a new file or overwrite the original file
             os.makedirs(output_folder, exist_ok=True)
             with open(os.path.join(output_folder, file_name), "w") as file:
-                file.write("# Summary of changes:\n")
-                for line in summary.split("\n"):
-                    file.write(f"# {line}\n")
-                file.write("\n")
                 file.write(refactored_code)
+
+            # Save the summary to a separate file
+            os.makedirs(summary_folder, exist_ok=True)
+            summary_file_name = os.path.splitext(file_name)[0] + "_summary.txt"
+            with open(os.path.join(summary_folder, summary_file_name), "w") as file:
+                file.write(summary)
 
 if __name__ == "__main__":
     process_files("./repofolder")
+
